@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sortingmath-dev-120219-authRole",
+      "UnauthRoleArn": "arn:aws:iam::410206236958:role/amplify-sortingmath-dev-120219-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::410206236958:role/amplify-sortingmath-dev-120219-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-sortingmath-dev-120219-deployment",
+      "UnauthRoleName": "amplify-sortingmath-dev-120219-unauthRole",
+      "StackName": "amplify-sortingmath-dev-120219",
+      "StackId": "arn:aws:cloudformation:ap-south-1:410206236958:stack/amplify-sortingmath-dev-120219/9cedc470-581c-11ed-9ddc-0290f9c4a3ac",
+      "AmplifyAppId": "d3nnxgfdd7j9hd"
+    },
+    "categories": {
+      "function": {
+        "sortlist": {
+          "deploymentBucketName": "amplify-sortingmath-dev-120219-deployment",
+          "s3Key": "amplify-builds/sortlist-4974463841654a576251-build.zip"
+        }
+      }
+    }
+  }
+}
