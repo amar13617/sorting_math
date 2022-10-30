@@ -11,5 +11,6 @@ def handler(event, context):
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
       },
-      'body': json.dumps('Hello from your new Amplify Python lambda!')
+      'body': json.dumps('Hello from Amar')
+
   }
