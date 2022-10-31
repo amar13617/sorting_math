@@ -9,6 +9,8 @@ def handler(event, context):
     return find_odd_even(list1)
   elif operation == "average_list":
     return find_average(list1)
+  elif operation == "list_square":
+    return find_square(list1)
   else:
     return { 
    }
@@ -31,3 +33,12 @@ def find_average(data):
     return {
         "find_average" : average
     }
+
+def find_square(data):
+    square_list = []
+    for i in data:
+        square_list.append(i*i)
+    return {
+        "square_list" : square_list
+    }
+

@@ -15,7 +15,7 @@
       "function": {
         "sortlist": {
           "deploymentBucketName": "amplify-sortingmath-dev-120219-deployment",
-          "s3Key": "amplify-builds/sortlist-75724c4941566d507435-build.zip"
+          "s3Key": "amplify-builds/sortlist-4e3737395951732f3352-build.zip"
         }
       }
     }
