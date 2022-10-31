@@ -20,7 +20,7 @@ def find_odd_even(data):
             odd_list.append(i)
 
     return {
-        "even_list" : even_list
-        "odd_list" : odd_list
+        "even_list" : even_list,
+        "odd_list" :  odd_list
     }
 
