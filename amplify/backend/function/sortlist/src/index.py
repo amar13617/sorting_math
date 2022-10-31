@@ -11,6 +11,6 @@ def handler(event, context):
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
       },
-      'body': json.dumps('Hello from Amar')
+      'body': json.dumps('Hello from Amar kumar')
 
   }
