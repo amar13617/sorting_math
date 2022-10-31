@@ -11,6 +11,8 @@ def handler(event, context):
     return find_average(list1)
   elif operation == "list_square":
     return find_square(list1)
+  elif operation == "prime_list":
+    return find_prime(list1)
   else:
     return { 
    }
@@ -42,3 +44,15 @@ def find_square(data):
         "square_list" : square_list
     }
 
+def find_prime(data):
+    prime_list = []
+    for i in data:
+        c = 0
+        for j in range(1, i):
+            if i%j == 0:
+                c += 1
+        if c == 1:
+            prime_list.append(i)
+    return {
+        "prime_number" : prime_list
+    }
