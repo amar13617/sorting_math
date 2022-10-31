@@ -7,6 +7,8 @@ def handler(event, context):
   operation = event.get("operation")
   if operation == "find_odd_even":
     return find_odd_even(list1)
+  elif operation == "average_list":
+    return find_average(list1)
   else:
     return { 
    }
@@ -24,3 +26,8 @@ def find_odd_even(data):
         "odd_list" :  odd_list
     }
 
+def find_average(data):
+    average = sum(data)/max(len(data),1)
+    return {
+        "find_average" : average
+    }
