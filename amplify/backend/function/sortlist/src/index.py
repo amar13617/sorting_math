@@ -13,6 +13,8 @@ def handler(event, context):
     return find_square(list1)
   elif operation == "prime_list":
     return find_prime(list1)
+  elif operation == "list_reverse":
+    return find_reverse(list1)
   else:
     return { 
    }
@@ -55,4 +57,12 @@ def find_prime(data):
             prime_list.append(i)
     return {
         "prime_number" : prime_list
+    }
+
+def find_reverse(data):
+    reverse = []
+    for i in reversed(data):
+        reverse.append(i)
+    return {
+        "reverse_list" : reverse
     }
