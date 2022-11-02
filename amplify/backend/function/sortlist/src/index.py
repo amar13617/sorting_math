@@ -15,6 +15,8 @@ def handler(event, context):
     return find_prime(list1)
   elif operation == "list_reverse":
     return find_reverse(list1)
+  elif operation == "find_sort":
+    return find_sort(list1)
   else:
     return { 
    }
@@ -65,4 +67,12 @@ def find_reverse(data):
         reverse.append(i)
     return {
         "reverse_list" : reverse
+    }
+
+def find_sort(data):
+    sort_numbers = []
+    for i in sorted(data):
+        sort_numbers.append(i)
+    return {
+        "sort_number" : sort_numbers
     }
