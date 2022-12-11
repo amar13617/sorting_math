@@ -1,10 +1,37 @@
 import json
+import boto3
+s3_client = boto3.client('s3')
+dynamodb = boto3.resource('dynamodb')
 
 def handler(event, context):
   print('received event:')
   print(event)
-  list1 = event.get("data")
+  bucket = 'surveysort'
+  survey = event['filename']
+  csv_object = s3_client.get_object(Bucket=bucket,Key=survey)
+  print(csv_object)
+  file_reader = csv_object['Body'].read().decode("utf-8")
+  users = file_reader.split("\n")
+  print(users)
+  
+  test_sum = 0
+  for index in range(1, len(users)):
+    if not (users[index]):
+        continue
+    test_sum = test_sum + int(users[index].split(",")[2])
+
+  average_list = test_sum/(len(users)-1)
+
+  filename = event.get("survey.csv")
   operation = event.get("operation")
+  list1 = []
+  for index in range(1, len(users)):
+    if not (users[index]):
+        continue
+    
+    list1.append(int(users[index].split(",")[2]))
+  print(list1)
+  #list1 = event.get("data")
   if operation == "find_odd_even":
     return find_odd_even(list1)
   elif operation == "average_list":
@@ -20,6 +47,7 @@ def handler(event, context):
   else:
     return { 
    }
+
 def find_odd_even(data):
     even_list = []
     odd_list = []
