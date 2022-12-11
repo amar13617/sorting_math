@@ -11,27 +11,26 @@ def handler(event, context):
   csv_object = s3_client.get_object(Bucket=bucket,Key=survey)
   print(csv_object)
   file_reader = csv_object['Body'].read().decode("utf-8")
-  users = file_reader.split("\n")
-  print(users)
+  emp_details = file_reader.split("\n")
+  print(emp_details)
   
   test_sum = 0
-  for index in range(1, len(users)):
-    if not (users[index]):
+  for index in range(1, len(emp_details)):
+    if not (emp_details[index]):
         continue
-    test_sum = test_sum + int(users[index].split(",")[2])
+    test_sum = test_sum + int(emp_details[index].split(",")[2])
 
-  average_list = test_sum/(len(users)-1)
+  average_list = test_sum/(len(emp_details)-1)
 
   filename = event.get("survey.csv")
   operation = event.get("operation")
   list1 = []
-  for index in range(1, len(users)):
-    if not (users[index]):
+  for index in range(1, len(emp_details)):
+    if not (emp_details[index]):
         continue
     
-    list1.append(int(users[index].split(",")[2]))
+    list1.append(int(emp_details[index].split(",")[2]))
   print(list1)
-  #list1 = event.get("data")
   #list1 = event.get("data")
   if operation == "find_odd_even":
     return find_odd_even(list1)
