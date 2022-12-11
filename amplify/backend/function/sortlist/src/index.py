@@ -32,6 +32,7 @@ def handler(event, context):
     list1.append(int(users[index].split(",")[2]))
   print(list1)
   #list1 = event.get("data")
+  #list1 = event.get("data")
   if operation == "find_odd_even":
     return find_odd_even(list1)
   elif operation == "average_list":
