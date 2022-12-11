@@ -13,7 +13,7 @@ def handler(event, context):
   file_reader = csv_object['Body'].read().decode("utf-8")
   user = file_reader.split("\n")
   print(user)
-  
+
   test_sum = 0
   for index in range(1, len(user)):
     if not (user[index]):
@@ -31,6 +31,20 @@ def handler(event, context):
     
     list1.append(int(user[index].split(",")[2]))
   print(list1)
+
+  sort_listed = []
+  for index in range(1,len(user)):
+    if not user[index]:
+        continue
+    sort_listed.append(int(user[index].split(",")[2]))
+  print(sort_listed)
+
+  #list1 = []
+  #for index in range(1,len(user)):
+  #  if not (user[index]):
+  #      continue
+  #  list1.append(int(user[index].split(",")[2]))
+  #print(list1)
   #list1 = event.get("data")
   if operation == "find_odd_even":
     return find_odd_even(list1)
