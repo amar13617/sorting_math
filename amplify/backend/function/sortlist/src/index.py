@@ -11,6 +11,7 @@ def handler(event, context):
   csv_object = s3_client.get_object(Bucket=bucket,Key=survey)
   print(csv_object)
   file_reader = csv_object['Body'].read().decode("utf-8")
+  print(file_reader)
   user = file_reader.split("\n")
   print(user)
 
@@ -22,15 +23,15 @@ def handler(event, context):
 
   average_list = test_sum/(len(user)-1)
 
-  filename = event.get("survey.csv")
-  operation = event.get("operation")
-  list1 = []
-  for index in range(1, len(user)):
-    if not (user[index]):
-        continue
+  #filename = event.get("survey.csv")
+  #operation = event.get("operation")
+  #list1 = []
+  #for index in range(1, len(user)):
+  #  if not (user[index]):
+  #      continue
     
-    list1.append(int(user[index].split(",")[2]))
-  print(list1)
+  #  list1.append(int(user[index].split(",")[2]))
+  #print(list1)
 
   sort_listed = []
   for index in range(1,len(user)):
@@ -39,15 +40,37 @@ def handler(event, context):
     sort_listed.append(int(user[index].split(",")[2]))
   print(sort_listed)
 
-  #list1 = []
-  #for index in range(1,len(user)):
-  #  if not (user[index]):
-  #      continue
-  #  list1.append(int(user[index].split(",")[2]))
-  #print(list1)
+  even_list = []
+  odd_list = []
+  for index in range(1, len(user)):
+    if not (user[index]):
+        continue
+    if (int(user[index].split(",")[2]))%2 == 0:
+        even_list.append(int(user[index].split(",")[2]))
+    else:
+        odd_list.append(int(user[index].split(",")[2]))
+
+    reverse_list = []
+    for index in range(1, len(user)):
+        if not user[index]:
+            continue
+        reverse_list.append(int(user[index].split(",")[2]))
+    print(reverse_list)
+    
+  list1 = []
+  for index in range(1, len(user)):
+    if not (user[index]):
+        continue
+    
+    list1.append(int(user[index].split(",")[2]))
+  print(list1)
   #list1 = event.get("data")
+  filename = event.get("survey.csv")
+  operation = event.get("operation")
   if operation == "find_odd_even":
     return find_odd_even(list1)
+  elif operation == "maximum":
+    return maximum(list1)
   elif operation == "average_list":
     return find_average(list1)
   elif operation == "list_square":
@@ -75,6 +98,7 @@ def find_odd_even(data):
         "even_list" : even_list,
         "odd_list" :  odd_list
     }
+
 
 def find_average(data):
     average = sum(data)/max(len(data),1)
