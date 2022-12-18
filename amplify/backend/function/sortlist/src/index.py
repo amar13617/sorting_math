@@ -15,130 +15,76 @@ def handler(event, context):
   user = file_reader.split("\n")
   print(user)
 
-  test_sum = 0
-  for index in range(1, len(user)):
-    if not (user[index]):
-        continue
-    test_sum = test_sum + int(user[index].split(",")[2])
+#  test_sum = 0
+#  for index in range(1,len(user)):
+#    if not (user[index]):
+#      continue
+#    test_sum =test_sum + int(user[index].split(",")[2])
+  
+#  average_list = test_sum/(len(user)-1)
+#  print(average_list)
+  
+  
 
-  average_list = test_sum/(len(user)-1)
+  
 
-  #filename = event.get("survey.csv")
-  #operation = event.get("operation")
-  #list1 = []
-  #for index in range(1, len(user)):
-  #  if not (user[index]):
-  #      continue
-    
-  #  list1.append(int(user[index].split(",")[2]))
-  #print(list1)
+  
 
-  sort_listed = []
-  for index in range(1,len(user)):
-    if not user[index]:
-        continue
-    sort_listed.append(int(user[index].split(",")[2]))
-  print(sort_listed)
-
-  even_list = []
-  odd_list = []
-  for index in range(1, len(user)):
-    if not (user[index]):
-        continue
-    if (int(user[index].split(",")[2]))%2 == 0:
-        even_list.append(int(user[index].split(",")[2]))
-    else:
-        odd_list.append(int(user[index].split(",")[2]))
-
-    reverse_list = []
-    for index in range(1, len(user)):
-        if not user[index]:
-            continue
-        reverse_list.append(int(user[index].split(",")[2]))
-    print(reverse_list)
-    
   list1 = []
   for index in range(1, len(user)):
-    if not (user[index]):
-        continue
-    
+    if not user[index]:
+      continue
     list1.append(int(user[index].split(",")[2]))
-  print(list1)
-  #list1 = event.get("data")
+  
   filename = event.get("survey.csv")
   operation = event.get("operation")
-  if operation == "find_odd_even":
-    return find_odd_even(list1)
-  elif operation == "maximum":
-    return maximum(list1)
-  elif operation == "average_list":
-    return find_average(list1)
-  elif operation == "list_square":
-    return find_square(list1)
-  elif operation == "prime_list":
-    return find_prime(list1)
-  elif operation == "list_reverse":
-    return find_reverse(list1)
-  elif operation == "find_sort":
+
+  if operation == "sort_list":
     return find_sort(list1)
+  elif operation == "average":
+    return find_average(list1)
+  elif operation == "reverse_list":
+    return reverse_number(list1)
+  elif operation == "odd_even":
+    return find_odd_even(list1)
   else:
-    return { 
-   }
-
-def find_odd_even(data):
-    even_list = []
-    odd_list = []
-    for i in data:
-        if i % 2 == 0:
-            even_list.append(i)
-        else:
-            odd_list.append(i)
-
     return {
-        "even_list" : even_list,
-        "odd_list" :  odd_list
+
     }
 
+def find_average(list1):
+  average = sum(list1)/(len(list1))
+  return {
+    "average_list" : average
+  }
 
-def find_average(data):
-    average = sum(data)/max(len(data),1)
-    return {
-        "find_average" : average
-    }
 
-def find_square(data):
-    square_list = []
-    for i in data:
-        square_list.append(i*i)
-    return {
-        "square_list" : square_list
-    }
+def find_odd_even(list1):
+  even_list = []
+  odd_list = []
+  for index in list1:
+    if index % 2 == 0:
+      even_list.append(index)
+    else:
+      odd_list.append(index)
 
-def find_prime(data):
-    prime_list = []
-    for i in data:
-        c = 0
-        for j in range(1, i):
-            if i%j == 0:
-                c += 1
-        if c == 1:
-            prime_list.append(i)
-    return {
-        "prime_number" : prime_list
-    }
+  return {
+    "even" : even_list,
+    "odds" : odd_list
+  }
 
-def find_reverse(data):
-    reverse = []
-    for i in reversed(data):
-        reverse.append(i)
-    return {
-        "reverse_list" : reverse
-    }
+def reverse_number(list1):
+  reverse_list = []
+  for index in reversed(list1):
+    reverse_list.append(index)
+  return {
+    "list_reverse" : reverse_list
+  }
 
-def find_sort(data):
-    sort_numbers = []
-    for i in sorted(data):
-        sort_numbers.append(i)
-    return {
-        "sort_number" : sort_numbers
-    }
+def find_sort(list1):
+  sort_list = []
+  for index in sorted(list1):
+    sort_list.append(index)
+  return {
+    "sorting_list" : sort_list
+  }
